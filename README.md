@@ -9,6 +9,18 @@ Modifications:
  - removed the Docker bits (as I'm installing this in a VM).
  - added Azure MySQL service CA PEM file to repo
 
+---
+
+To install:
+
+Copy repo files to /app
+
+
+Create the database:
+```
+mysql --user=<user> --password=<password> --host=<host> --ssl-mode=VERIFY_CA --ssl-ca=/app/BaltimoreCyberTrustRoot.crt.pem < /app/azurevote.sql
+```
+
 Systemd service file:
 ```
 [Unit]
