@@ -21,7 +21,7 @@ if app.config['SHOWHOST'] == "true":
 def index():
 
     # MySQL Connection
-    connection = pymysql.connect(user=os.environ['MYSQL_USER'], password=os.environ['MYSQL_PASSWORD'], host=os.environ['MYSQL_HOST'], port=os.environ['MYSQL_PORT'], db=os.environ['MYSQL_DATABASE'], ssl={'ssl': {'ca': os.environ['MYSQL_SSL_CA']}})
+    connection = pymysql.connect(user=os.environ['MYSQL_USER'], password=os.environ['MYSQL_PASSWORD'], host=os.environ['MYSQL_HOST'], port=int(os.environ['MYSQL_PORT']), db=os.environ['MYSQL_DATABASE'], ssl={'ca': os.environ['MYSQL_SSL_CA']})
     cursor = connection.cursor()
 
     # Vote tracking
@@ -79,7 +79,7 @@ def index():
 def results():
 
     # MySQL Connection
-    connection = mysql.connect()
+    connection = pymysql.connect(user=os.environ['MYSQL_USER'], password=os.environ['MYSQL_PASSWORD'], host=os.environ['MYSQL_HOST'], port=int(os.environ['MYSQL_PORT']), db=os.environ['MYSQL_DATABASE'], ssl={'ca': os.environ['MYSQL_SSL_CA']})
     cursor = connection.cursor()
 
     # Get current values
